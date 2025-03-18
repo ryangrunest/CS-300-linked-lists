@@ -1,0 +1,58 @@
+START
+
+DEFINE Node class:
+    - Attributes: Bid bid, Node* next
+    - Constructor: Initialize bid and set next to nullptr
+
+DEFINE LinkedList class:
+    - Attributes: Node* head, Node* tail, int size
+    - Methods:
+        - Constructor: Initialize head, tail to nullptr, size to 0
+        - Destructor: Free all nodes
+        - Append(Bid bid): Add a new node to the end of the list
+        - Prepend(Bid bid): Add a new node to the beginning of the list
+        - PrintList(): Print all bids in the list
+        - Remove(string bidId): Remove a node with the given bidId
+        - Search(string bidId): Find and return a bid by bidId
+        - Size(): Return the size of the list
+
+DEFINE main function:
+    - Parse command-line arguments:
+        - If 2 arguments: Set csvPath to argv[1], bidKey to default value "98109"
+        - If 3 arguments: Set csvPath to argv[1], bidKey to argv[2]
+        - Otherwise: Set csvPath to default file, bidKey to default value "98109"
+
+    - Initialize LinkedList object
+    - Initialize variables for user input and timing
+
+    LOOP until user exits:
+        - Display menu options:
+            1. Load Bids
+            2. Display All Bids
+            3. Find Bid
+            4. Remove Bid
+            5. Exit
+
+        - Get user choice
+
+        SWITCH on user choice:
+            CASE 1: Load Bids
+                - Call loadBids(csvPath, &bidList)
+                - Display success message
+            CASE 2: Display All Bids
+                - Call bidList.PrintList()
+            CASE 3: Find Bid
+                - Prompt user for bidKey
+                - Call bidList.Search(bidKey)
+                - If found, display bid
+                - Otherwise, display "Bid not found"
+            CASE 4: Remove Bid
+                - Prompt user for bidKey
+                - Call bidList.Remove(bidKey)
+            CASE 5: Exit
+                - Display "Goodbye" message
+                - Exit loop
+
+    END LOOP
+
+END
