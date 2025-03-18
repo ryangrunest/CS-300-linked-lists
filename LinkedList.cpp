@@ -62,7 +62,7 @@ private:
 
     Node* head;
     Node* tail;
-    int size = 0;
+    int size;
 
 public:
     LinkedList();
@@ -212,19 +212,31 @@ void LinkedList::Remove(string bidId) {
  * @param bidId The bid id to search for
  */
 Bid LinkedList::Search(string bidId) {
+    Bid emptyBid;
     // FIXME (6): Implement search logic
+    if (head == nullptr) {
+        return emptyBid; // return empty bid
+    }
 
     // special case if matching bid is the head
+    if (head ->bid.bidId == bidId) {
+        return head->bid; // return the head bid
+    }
 
     // start at the head of the list
+    Node* current = head;
+    // while loop over each node looking for a match
+    while (current != nullptr) {
+        // if the current node bidID is equal to the search bidID
+        if (current->bid.bidId == bidId) {
+            return current->bid; // return current bid
+        }
+        // current node is equal to next node
+        current = current->next;
+    }
 
-    // keep searching until end reached with while loop (current != nullptr)
-        // if the current node matches, return current bid
-        // else current node is equal to next node
-
-    //(the next two statements will only execute if search item is not found)
-        //create new empty bid
-        //return empty bid 
+    //the next statement will only execute if search item is not found
+    return emptyBid; 
 }
 
 /**
@@ -390,6 +402,8 @@ int main(int argc, char* argv[]) {
             break;
 
         case 4:
+            cout << "Enter the bid key: ";
+            cin >> bidKey;
             ticks = clock();
 
             bid = bidList.Search(bidKey);
@@ -408,6 +422,8 @@ int main(int argc, char* argv[]) {
             break;
 
         case 5:
+            cout << "Enter the bid key: ";
+            cin >> bidKey;
             bidList.Remove(bidKey);
 
             break;

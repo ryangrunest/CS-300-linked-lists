@@ -1,7 +1,22 @@
 {
   "configurations": [
     {
-      "name": "C/C++: clang++ build and debug active file",
+      "name": "LinkedList",
+      "type": "cppdbg",
+      "request": "launch",
+      "program": "${fileDirname}/LinkedList",
+      "args": [
+        "eBid_Monthly_Sales.csv"
+      ],
+      "stopAtEntry": false,
+      "cwd": "${workspaceFolder}",
+      "environment": [],
+      "externalConsole": false,
+      "MIMode": "lldb",
+      "preLaunchTask": "Build LinkedList"
+    },
+    {
+      "name": "C/C++: clang build and debug active file",
       "type": "cppdbg",
       "request": "launch",
       "program": "${fileDirname}/${fileBasenameNoExtension}",
@@ -11,7 +26,7 @@
       "environment": [],
       "externalConsole": false,
       "MIMode": "lldb",
-      "preLaunchTask": "C/C++: clang++ build active file"
+      "preLaunchTask": "C/C++: clang build active file"
     }
   ],
   "version": "2.0.0"
